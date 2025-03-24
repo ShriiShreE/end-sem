@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eduport - Education & Learning Bootstrap Template</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Swiper CSS for carousels -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #6F42C1;
+      --secondary: #fd7e14;
+      --success: #198754;
+      --info: #0dcaf0;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #212529;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Header styles */
+    .navbar-brand span.text-primary {
+      color: var(--primary) !important;
+    }
+    
+    .category-badge {
+      background-color: rgba(111, 66, 193, 0.1);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    .search-input {
+      border-radius: 6px;
+      border: 1px solid #dee2e6;
+      padding: 8px 15px;
+      padding-right: 40px;
+      font-size: 14px;
+    }
+    
+    .search-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d;
+    }
+    
+    /* Hero section styles */
+    .hero-section {
+      position: relative;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    
+    .hero-title {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .highlight {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 15px;
+      background-color: #ffc107;
+      z-index: -1;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+
+    .feature-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #212529;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    
+    .feature-dot-inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: white;
+    }
+    
+    .btn-get-started {
+      background-color: #f8d7da;
+      color: #dc3545;
+      border: none;
+      padding: 12px 24px;
+      font-weight: 500;
+    }
+    
+    .btn-get-started:hover {
+      background-color: #f5c2c7;
+      color: #dc3545;
+    }
+    
+    .btn-watch {
+      border-color: #dee2e6;
+      color: #6c757d;
+      padding: 12px 24px;
+      font-weight: 500;
+    }
+    
+    .btn-watch i {
+      color: var(--primary);
+    }
+    
+    /* Hero image container */
+    .hero-image-container {
+      position: relative;
+      width: 100%;
+      height: 450px;
+    }
+    
+    .hero-circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #0f3057;
+      overflow: hidden;
+    }
+    
+    /* Floating elements */
+    .floating-element {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    
+    .atom-icon {
+      top: 25%;
+      left: -20px;
+      width: 50px;
+      height: 50px;
+      background-color: #0d6efd;
+      color: white;
+      font-size: 20px;
+    }
+    
+    .star-icon {
+      top: 25%;
+      right: -20px;
+      width: 50px;
+      height: 50px;
+      background-color: #ffc107;
+      color: white;
+      font-size: 20px;
+    }
+    
+    .bulb-icon {
+      top: 40px;
+      right: 40px;
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      color: #ffc107;
+      font-size: 20px;
+    }
+    
+    /* Student card */
+    .student-card {
+      position: absolute;
+      top: 40px;
+      right: 80px;
+      background-color: #198754;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+    
+    .student-avatars {
+      display: flex;
+      margin-top: 8px;
+    }
+    
+    .student-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: white;
+      color: #198754;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      border: 2px solid #198754;
+      margin-right: -10px;
+    }
+    
+    .student-avatar.more {
+      background-color: #157347;
+      color: white;
+    }
+    
+    /* Congratulations card */
+    .congrats-card {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      background-color: white;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+    
+    .mail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ffc107;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+    
+    /* Stats section */
+    .stats-section {
+      padding: 50px 0;
+    }
+    
+    .stat-card {
+      padding: 24px;
+      border-radius: 8px;
+    }
+    
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    /* Background decorations */
+    .bg-decoration {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      z-index: -1;
+    }
+    
+    .bg-decoration-1 {
+      top: 0;
+      left: 0;
+      width: 160px;
+      height: 160px;
+      background-color: #fd7e14;
+      transform: translate(-50%, -50%);
+    }
+    
+    .bg-decoration-2 {
+      bottom: 0;
+      right: 0;
+      width: 240px;
+      height: 240px;
+      background-color: #ffc107;
+      transform: translate(30%, 30%);
+    }
+    
+    .bg-decoration-3 {
+      top: 33%;
+      left: 25%;
+      width: 16px;
+      height: 16px;
+      background-color: #0dcaf0;
+      opacity: 1;
+    }
+    
+    /* Course card styles */
+    .course-card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .course-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .course-card:hover .course-image img {
+      transform: scale(1.05);
+    }
+    
+    .course-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .course-content {
+      padding: 20px;
+    }
+    
+    .course-rating {
+      color: #ffc107;
+      margin-right: 5px;
+    }
+    
+    .course-instructor {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #f0f0f0;
+    }
+    
+    .instructor-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+    
+    .instructor-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .course-price {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    /* Section styles */
+    .section-title {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+    
+    /* Category tabs */
+    .category-tabs {
+      border-bottom: 1px solid #dee2e6;
+      margin-bottom: 30px;
+    }
+    
+    .category-tabs .nav-link {
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: #6c757d;
+      font-weight: 600;
+      padding: 10px 20px;
+      margin-right: 10px;
+    }
+    
+    .category-tabs .nav-link.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background-color: transparent;
+    }
+    
+    /* Swiper styles */
+    .swiper {
+      padding: 20px 5px 40px;
+    }
+    
+    .swiper-pagination {
+      bottom: 0 !important;
+    }
+    
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--primary);
+      background-color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .swiper-button-next:after, .swiper-button-prev:after {
+      font-size: 18px;
+    }
+    
+    /* Trending courses */
+    .trending-section {
+      position: relative;
+      padding: 80px 0;
+      background-color: #f8f9fa;
+      overflow: hidden;
+    }
+    
+    .floating-image {
+      position: absolute;
+      z-index: 1;
+    }
+    
+    .floating-image-1 {
+      top: 10%;
+      left: 5%;
+      max-width: 100px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-image-2 {
+      top: 20%;
+      right: 5%;
+      max-width: 120px;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    .floating-image-3 {
+      bottom: 10%;
+      left: 10%;
+      max-width: 80px;
+      animation: float 7s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    /* Testimonial styles */
+    .testimonial-section {
+      padding: 80px 0;
+    }
+    
+    .testimonial-card {
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 60px;
+      color: rgba(111, 66, 193, 0.1);
+      font-family: Georgia, serif;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+    }
+    
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .testimonial-info h6 {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .testimonial-rating {
+      color: #ffc107;
+      margin-top: 5px;
+    }
+    
+    /* Footer styles */
+    .footer {
+      background-color: #f8f9fa;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-title {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .footer-link {
+      color: #6c757d;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+    
+    .footer-link:hover {
+      color: var(--primary);
+    }
+    
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid #dee2e6;
+      margin-top: 40px;
+    }
+    
+    /* Dropdown menu */
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 15px 0;
+    }
+    
+    .dropdown-item {
+      padding: 8px 20px;
+      color: #6c757d;
+      font-weight: 500;
+    }
+    
+    .dropdown-item:hover {
+      background-color: rgba(111, 66, 193, 0.05);
+      color: var(--primary);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+      .hero-section {
+        padding: 50px 0;
+      }
+      
+      .hero-image-container {
+        margin-top: 40px;
+        height: 400px;
+      }
+      
+      .floating-image {
+        max-width: 80px !important;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .hero-image-container {
+        height: 350px;
+      }
+      
+      .student-card, .congrats-card {
+        transform: scale(0.8);
+      }
+      
+      .student-card {
+        right: 40px;
+      }
+      
+      .floating-image {
+        max-width: 60px !important;
+      }
+    }
+    
+    @media (max-width: 575.98px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .feature-items {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .feature-item {
+        margin-bottom: 15px;
+      }
+      
+      .floating-image {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="border-bottom py-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-8 d-flex align-items-center">
+          <!-- Logo -->
+          <a href="#" class="navbar-brand d-flex align-items-center me-3">
+            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+              <span class="fw-bold">E</span>
+            </div>
+            <span class="ms-2 fs-4 fw-bold">
+              <span class="text-dark">Edu</span><span class="text-primary">port</span>
+            </span>
+          </a>
+          
+          <!-- Category badge -->
+          <span class="category-badge d-none d-md-inline-block">Category</span>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="col-lg-6 d-none d-lg-block">
+          <nav class="d-flex justify-content-center">
+            <div class="dropdown">
+              <div class="d-flex align-items-center mx-3" role="button" data-bs-toggle="dropdown">
+                <span class="fw-medium text-secondary">Demos</span>
+                <i class="fas fa-chevron-down ms-1 small"></i>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Home Default</a></li>
+                <li><a class="dropdown-item" href="#">Home Education</a></li>
+                <li><a class="dropdown-item" href="#">Home Academy</a></li>
+                <li><a class="dropdown-item" href="#">Home Course</a></li>
+                <li><a class="dropdown-item" href="#">Home University</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <div class="d-flex align-items-center mx-3" role="button" data-bs-toggle="dropdown">
+                <span class="fw-medium text-secondary">Pages</span>
+                <i class="fas fa-chevron-down ms-1 small"></i>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">1</a></li>
+                <li><a class="dropdown-item" href="#">2</a></li>
+                <li><a class="dropdown-item" href="#">3</a></li>
+                <li><a class="dropdown-item" href="#">4</a></li>
+                <li><a class="dropdown-item" href="#">5</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <div class="d-flex align-items-center mx-3" role="button" data-bs-toggle="dropdown">
+                <span class="fw-medium text-secondary">Accounts</span>
+                <i class="fas fa-chevron-down ms-1 small"></i>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">1</a></li>
+                <li><a class="dropdown-item" href="#">2</a></li>
+                <li><a class="dropdown-item" href="#">3</a></li>
+                <li><a class="dropdown-item" href="#">4</a></li>
+                <li><a class="dropdown-item" href="#">5</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <div class="d-flex align-items-center mx-3" role="button" data-bs-toggle="dropdown">
+                <span class="fw-medium text-secondary">Megamenu</span>
+                <i class="fas fa-chevron-down ms-1 small"></i>
+              </div>
+              <div class="dropdown-menu dropdown-menu-end" style="width: 600px;">
+                <div class="row mx-0 p-3">
+                  <div class="col-6 col-md-3">
+                    <h6 class="mb-2 text-primary">Courses</h6>
+                    <a class="dropdown-item" href="#">Web Development</a>
+                    <a class="dropdown-item" href="#">Data Science</a>
+                    <a class="dropdown-item" href="#">Mobile Development</a>
+                    <a class="dropdown-item" href="#">Programming</a>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <h6 class="mb-2 text-primary">Accounts</h6>
+                    <a class="dropdown-item" href="#">Instructor</a>
+                    <a class="dropdown-item" href="#">Student</a>
+                    <a class="dropdown-item" href="#">Admin</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <h6 class="mb-2 text-primary">Support</h6>
+                    <a class="dropdown-item" href="#">Help Center</a>
+                    <a class="dropdown-item" href="#">Contact Us</a>
+                    <a class="dropdown-item" href="#">FAQ</a>
+                    <a class="dropdown-item" href="#">Documentation</a>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <h6 class="mb-2 text-primary">Resources</h6>
+                    <a class="dropdown-item" href="#">Blog</a>
+                    <a class="dropdown-item" href="#">Events</a>
+                    <a class="dropdown-item" href="#">Podcast</a>
+                    <a class="dropdown-item" href="#">Webinars</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mx-3">
+              <i class="fas fa-ellipsis-h text-secondary"></i>
+            </div>
+          </nav>
+        </div>
+        
+        <!-- Search and profile -->
+        <div class="col-lg-3 col-md-8 col-4 d-flex align-items-center justify-content-end">
+          <div class="position-relative me-3 d-none d-md-block">
+            <input type="text" class="search-input" placeholder="Search">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+          <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+            <span class="fw-medium">Shri</span>
+          </div>
+          <button class="navbar-toggler ms-3 d-lg-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div class="collapse d-lg-none" id="mobileMenu">
+        <div class="py-3">
+          <div class="py-2 border-bottom"><a href="#" class="text-decoration-none text-secondary">Demos</a></div>
+          <div class="py-2 border-bottom"><a href="#" class="text-decoration-none text-secondary">Pages</a></div>
+          <div class="py-2 border-bottom"><a href="#" class="text-decoration-none text-secondary">Accounts</a></div>
+          <div class="py-2 border-bottom"><a href="#" class="text-decoration-none text-secondary">Megamenu</a></div>
+          <div class="py-2"><a href="#" class="text-decoration-none text-secondary">More</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Hero Text -->
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="hero-title display-4">
+              Limitless learning at<br>
+              your <span class="highlight">fingertips</span>
+            </h1>
+            <p class="my-4 text-secondary fs-5">
+              Online learning and teaching marketplace with 5K+ courses & 10M students. Taught by experts to help you acquire new skills.
+            </p>
+            
+            <!-- Feature items -->
+            <div class="d-flex flex-wrap mb-5">
+                
+              <div class="feature-item">
+                <div class="feature-dot">
+                  <div class="feature-dot-inner"></div>
+                </div>
+                <span>Learn with experts</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot">
+                  <div class="feature-dot-inner"></div>
+                </div>
+                <span>Get certificate</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot">
+                  <div class="feature-dot-inner"></div>
+                </div>
+                <span>Get membership</span>
+              </div>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="d-flex flex-wrap">
+              <a href="#" class="btn btn-get-started me-3 mb-2">Get Started</a>
+              <a href="#" class="btn btn-watch mb-2">
+                <i class="fas fa-play me-2"></i> Watch video
+              </a>
+            </div>
+          </div>
+          
+          <!-- Hero Image -->
+          <div class="col-lg-6">
+            <div class="hero-image-container">
+              <div class="hero-circle">
+                <img src="https://eduport.webestica.com/assets/images/element/07.png" alt="Student" class="img-fluid w-100 h-100 object-fit-cover">
+              </div>
+              
+              <!-- Floating elements -->
+              <div class="floating-element atom-icon">
+                <i class="fas fa-atom"></i>
+              </div>
+              <div class="floating-element star-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="floating-element bulb-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              
+              <!-- Student card -->
+              <div class="student-card">
+                <div class="small">Our daily new students</div>
+                <div class="student-avatars">
+                  <div class="student-avatar">1</div>
+                  <div class="student-avatar">2</div>
+                  <div class="student-avatar">3</div>
+                  <div class="student-avatar">4</div>
+                  <div class="student-avatar more">+5</div>
+                </div>
+              </div>
+              
+              <!-- Congratulations card -->
+              <div class="congrats-card">
+                <div class="mail-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="fw-medium">Congratulations</div>
+                  <div class="small text-secondary">Your admission completed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Background decorations -->
+      <div class="bg-decoration bg-decoration-1"></div>
+      <div class="bg-decoration bg-decoration-2"></div>
+      <div class="bg-decoration bg-decoration-3"></div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Online Courses -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card bg-warning bg-opacity-10">
+              <div class="stat-icon bg-warning bg-opacity-25 text-warning">
+                <i class="fas fa-tv"></i>
+              </div>
+              <div class="stat-number">10K</div>
+              <div class="text-secondary">Online Courses</div>
+            </div>
+          </div>
+          
+          <!-- Expert Tutors -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card bg-primary bg-opacity-10">
+              <div class="stat-icon bg-primary bg-opacity-25 text-primary">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <div class="stat-number">200+</div>
+              <div class="text-secondary">Expert Tutors</div>
+            </div>
+          </div>
+          
+          <!-- Online Students -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card bg-purple bg-opacity-10" style="--bs-bg-opacity: .1; background-color: rgba(111, 66, 193, var(--bs-bg-opacity)) !important;">
+              <div class="stat-icon bg-purple bg-opacity-25" style="--bs-bg-opacity: .25; background-color: rgba(111, 66, 193, var(--bs-bg-opacity)) !important; color: #6F42C1;">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div class="stat-number">60K+</div>
+              <div class="text-secondary">Online Students</div>
+            </div>
+          </div>
+          
+          <!-- Certified Courses -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="stat-card bg-info bg-opacity-10">
+              <div class="stat-icon bg-info bg-opacity-25 text-info">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-number">6K+</div>
+              <div class="text-secondary">Certified Courses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Most Popular Courses Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Most Popular Courses</h2>
+          <p class="text-secondary mt-3">Choose from hundreds of courses from specialist organizations</p>
+        </div>
+        
+        <!-- Category Tabs -->
+        <ul class="nav nav-pills category-tabs justify-content-center" id="courseTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-courses" type="button" role="tab">Web Design</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-courses" type="button" role="tab">Design</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="development-tab" data-bs-toggle="tab" data-bs-target="#development-courses" type="button" role="tab">Development</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-courses" type="button" role="tab">Marketing</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-courses" type="button" role="tab">Finance</button>
+          </li>
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="courseTabContent">
+          <!-- All Courses Tab -->
+          <div class="tab-pane fade show active" id="all-courses" role="tabpanel">
+            <div class="swiper courseSwiper">
+              <div class="swiper-wrapper">
+                <!-- Course Card 1 -->
+                <div class="swiper-slide">
+                  <div class="course-card">
+                    <div class="course-image">
+                      <img src="https://eduport.webestica.com/assets/images/courses/4by3/08.jpg" alt="Course">
+                      <span class="course-badge bg-danger text-white">Hot & New</span>
+                    </div>
+                    <div class="course-content">
+                      <div class="d-flex justify-content-between mb-2">
+                        <span class="badge bg-purple bg-opacity-10 text-purple">All level</span>
+                      </div>
+                      <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Sketch from A to Z: for app designer</a></h5>
+                      <p class="mb-0 small text-secondary">Proposal indulged no do sociable he throwing settling</p>
+                      <span class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="text-secondary ms-1">4.0/5.0</span>
+                      </span>
+                      <!-- <p class="text-secondary small">
+                        <i class="fas fa-clock me-2"></i>12h 56 m
+                        <i class="fas fa-table ms-3 me-2"></i> 15 lectures
+                      </p> -->
+                      <div class="course-instructor">
+                        <div>
+                          <p class="text-secondary small">
+                            <i class="fas fa-clock me-2"></i>12h 56 m
+                            <i class="fas fa-table ms-3 me-2"></i> 15 lectures
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Course Card 2 -->
+                <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/02.jpg" alt="Course">
+                        <span class="course-badge bg-success text-white">Bestseller</span>
+                      </div>
+                      <div class="course-content">
+                        <div class="d-flex justify-content-between mb-2">
+                          <span class="badge bg-purple bg-opacity-10 text-purple">All level</span>
+                        </div>
+                        <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Graphic Design Masterclass</a></h5>
+                        <p class="mb-0 small text-secondary">Rooms oh fully taken by worse do Points afraid but may end Rooms Points afraid but may end Rooms</p>
+                        <span class="text-warning">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          <span class="text-secondary ms-1">4.5/5.0</span>
+                        </span>
+                        <div class="course-instructor">
+                          <div>
+                            <p class="text-secondary small">
+                              <i class="fas fa-clock me-2"></i>9h 56m
+                              <i class="fas fa-table ms-3 me-2"></i> 65 lectures
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- Course Card 3 -->
+                <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/03.jpg" alt="Course">
+                        <!-- <span class="course-badge bg-success text-white">Bestseller</span> -->
+                      </div>
+                      <div class="course-content">
+                        <div class="d-flex justify-content-between mb-2">
+                          <span class="badge bg-purple bg-opacity-10 text-purple">All level</span>
+                        </div>
+                        <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Create a Design System in Figma</a></h5>
+                        <p class="mb-0 small text-secondary">Rooms oh fully taken by worse do. Points afraid but may end afraid but may end.</p>
+                        <span class="text-warning">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          <span class="text-secondary ms-1">4.5/5.0</span>
+                        </span>
+                        <div class="course-instructor">
+                          <div>
+                            <p class="text-secondary small">
+                              <i class="fas fa-clock me-2"></i>5h 56m
+                              <i class="fas fa-table ms-3 me-2"></i> 32 lectures
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                <!-- Course Card 4 -->
+                <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="https://eduport.webestica.com/assets/images/courses/4by3/07.jpg" alt="Course">
+                        <!-- <span class="course-badge bg-success text-white">Bestseller</span> -->
+                      </div>
+                      <div class="course-content">
+                        <div class="d-flex justify-content-between mb-2">
+                          <span class="badge bg-purple bg-opacity-10 text-purple">All level</span>
+                        </div>
+                        <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Deep Learning with React-Native</a></h5>
+                        <p class="mb-0 small text-secondary">Far advanced settling say finished raillery. Offered chiefly farther</p>
+                        <span class="text-warning">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          <span class="text-secondary ms-1">4.0/5.0</span>
+                        </span>
+                        <div class="course-instructor">
+                          <div>
+                            <p class="text-secondary small">
+                              <i class="fas fa-clock me-2"></i>18h 56m
+                              <i class="fas fa-table ms-3 me-2"></i> 99 lectures
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                <!-- Course Card 5 -->
+                <div class="swiper-slide">
+                  <div class="course-card">
+                    <div class="course-image">
+                      <img src="https://eduport.webestica.com/assets/images/courses/4by3/11.jpg" alt="Course">
+                    </div>
+                    <div class="course-content">
+                      <div class="d-flex justify-content-between mb-2">
+                        <span class="badge bg-purple bg-opacity-10 text-purple">Beginner</span>
+                      </div>
+                      <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Build Responsive Websites with HTML</a></h5>
+                      <p class="mb-0 small text-secondary">Far advanced settling say finished raillery. Offered chiefly farther</p>
+                      <span class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="text-secondary ms-1">4.0/5.0</span>
+                      </span>
+                      <p class="text-secondary small">
+                        <i class="fas fa-clock me-2"></i>15h 30m
+                        <i class="fas fa-table ms-3 me-2"></i>68 lectures
+                      </p>
+                      <div class="course-instructor">
+                        <div>
+                          <p class="text-secondary small">
+                            <i class="fas fa-clock me-2"></i>18h 56m
+                            <i class="fas fa-table ms-3 me-2"></i> 99 lectures
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+          
+
+          <div class="tab-pane fade" id="design-courses" role="tabpanel">
+            <!-- Design courses content -->
+            <div class="text-center py-5">
+              <p>Design Courses Coming Soon</p>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="development-courses" role="tabpanel">
+            <!-- Web Development Section -->
+            <div class="row g-4">
+              <!-- Web Dev Course 1 -->
+              <div class="col-sm-6 col-lg-4">
+                <div class="course-card">
+                  <div class="course-image">
+                    <img src="https://eduport.webestica.com/assets/images/courses/4by3/06.jpg" alt="Web Development Course">
+                  </div>
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="badge bg-purple bg-opacity-10 text-purple">Beginner</span>
+                      <span class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span class="text-secondary ms-1">4.0</span>
+                      </span>
+                    </div>
+                    <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Angular the complete Guide</a></h5>
+                    <p class="text-secondary small">
+                      <i class="fas fa-clock me-2"></i>7h 45m
+                      <i class="fas fa-table ms-3 me-2"></i>68 lectures
+                    </p>
+                    <div class="course-instructor">
+                      <div class="instructor-avatar">
+                        <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-instructor-7.jpg" alt="Instructor">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Web Dev Course 2 -->
+              <div class="col-sm-6 col-lg-4">
+                <div class="course-card">
+                  <div class="course-image">
+                    <img src="https://eduport.webestica.com/assets/images/courses/4by3/13.jpg" alt="Web Development Course">
+                  </div>
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="badge bg-purple bg-opacity-10 text-purple">Beginner</span>
+                      <span class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span class="text-secondary ms-1">4.0</span>
+                      </span>
+                    </div>
+                    <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">PHP with CMS Project</a></h5>
+                    <p class="text-secondary small">
+                      <i class="fas fa-clock me-2"></i>7h 45m
+                      <i class="fas fa-table ms-3 me-2"></i>68 lectures
+                    </p>
+                    <div class="course-instructor">
+                      <div class="instructor-avatar">
+                        <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-instructor-7.jpg" alt="Instructor">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Web Dev Course 3 -->
+              <div class="col-sm-6 col-lg-4">
+                <div class="course-card">
+                  <div class="course-image">
+                    <img src="https://eduport.webestica.com/assets/images/courses/4by3/05.jpg" alt="Web Development Course">
+                    <span class="course-badge bg-success text-white">Bestseller</span>
+                  </div>
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="badge bg-purple bg-opacity-10 text-purple">Intermediate</span>
+                      <span class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="text-secondary ms-1">5.0</span>
+                      </span>
+                    </div>
+                    <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Complete Web Development Course in Python</a></h5>
+                    <p class="text-secondary small">
+                      <i class="fas fa-clock me-2"></i>10h 15m
+                      <i class="fas fa-table ms-3 me-2"></i>105 lectures
+                    </p>
+                    <div class="course-instructor">
+                      <div class="instructor-avatar">
+                        <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-instructor-8.jpg" alt="Instructor">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="marketing-courses" role="tabpanel">
+            <!-- Marketing courses content -->
+            <div class="text-center py-5">
+              <p>Marketing Courses Coming Soon</p>
+            </div>
+          </div>
+
+
+          
+          
+          <div class="tab-pane fade" id="finance-courses" role="tabpanel">
+            <!-- Finance Section -->
+            <div class="row g-4">
+              <!-- Finance Course 1 -->
+              
+              
+              
+              <!-- Finance Course 3 -->
+              <div class="col-sm-6 col-lg-4">
+                <div class="course-card">
+                  <div class="course-image">
+                    <img src="https://eduport.webestica.com/assets/images/courses/4by3/04.jpg" alt="Finance Course">
+                  </div>
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="badge bg-purple bg-opacity-10 text-purple">Intermediate</span>
+                      <span class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="text-secondary ms-1">5.0</span>
+                      </span>
+                    </div>
+                    <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">Learn Invision</a></h5>
+                    <p class="text-secondary small">
+                      <i class="fas fa-clock me-2"></i>11h 45m
+                      <i class="fas fa-table ms-3 me-2"></i>120 lectures
+                    </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Trending Courses Section -->
+    <section class="trending-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="section-title">
+              <h2>Our Trending Courses</h2>
+            </div>
+            <p class="text-secondary mb-4">
+              Check out most 🔥 courses in the market right now
+            </p>
+            
+            <!-- Trending Course List -->
+            <div class="list-group">
+              <!-- Course 1 -->
+              <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center p-3 mb-3 shadow-sm rounded">
+                <div class="rounded-circle bg-primary bg-opacity-10 text-primary p-3 me-3">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0">Build Responsive Websites with HTML</h6>
+                  <p class="mb-0 small text-secondary">
+                    <i class="fas fa-clock me-1"></i>3h 56m
+                    <span class="ms-3">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      <span class="text-secondary ms-1">4.5/5.0</span>
+                    </span>
+                  </p>
+                </div>
+                <div class="ms-auto">
+                  <span class="h6 fw-bold mb-0 text-success">$129</span>
+                </div>
+              </a>
+              
+              <!-- Course 2 -->
+              <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center p-3 mb-3 shadow-sm rounded">
+                <div class="rounded-circle bg-success bg-opacity-10 text-success p-3 me-3">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0">Digital Marketing Masterclass</h6>
+                  <p class="mb-0 small text-secondary">
+                    <i class="fas fa-clock me-1"></i>5h 40m
+                    <span class="ms-3">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="far fa-star text-warning"></i>
+                      <span class="text-secondary ms-1">4.0/5.0</span>
+                    </span>
+                  </p>
+                </div>
+                <div class="ms-auto">
+                  <span class="h6 fw-bold mb-0 text-success">$149</span>
+                </div>
+              </a>
+              
+              <!-- Course 3 -->
+              <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center p-3 mb-3 shadow-sm rounded">
+                <div class="rounded-circle bg-danger bg-opacity-10 text-danger p-3 me-3">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0">Graphic Design Bootcamp</h6>
+                  <p class="mb-0 small text-secondary">
+                    <i class="fas fa-clock me-1"></i>4h 10m
+                    <span class="ms-3">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      <span class="text-secondary ms-1">4.5/5.0</span>
+                    </span>
+                  </p>
+                </div>
+                <div class="ms-auto">
+                  <span class="h6 fw-bold mb-0 text-success">$99</span>
+                </div>
+              </a>
+              
+              <!-- Course 4 -->
+              <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center p-3 mb-3 shadow-sm rounded">
+                <div class="rounded-circle bg-info bg-opacity-10 text-info p-3 me-3">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0">JavaScript - The Complete Guide 2023</h6>
+                  <p class="mb-0 small text-secondary">
+                    <i class="fas fa-clock me-1"></i>8h 20m
+                    <span class="ms-3">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <span class="text-secondary ms-1">5.0/5.0</span>
+                    </span>
+                  </p>
+                </div>
+                <div class="ms-auto">
+                  <span class="h6 fw-bold mb-0 text-success">$119</span>
+                </div>
+              </a>
+            </div>
+            
+            <a href="#" class="btn btn-primary mt-4">View all courses</a>
+          </div>
+          
+          <div class="col-lg-6 position-relative">
+            <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-trending-courses.jpg" alt="Trending Courses" class="img-fluid rounded-3 shadow">
+            
+            <!-- Floating images -->
+            <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-floating-1.png" alt="" class="floating-image floating-image-1">
+            <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-floating-2.png" alt="" class="floating-image floating-image-2">
+            <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-floating-3.png" alt="" class="floating-image floating-image-3">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Some Valuable Feedback From Our Students</h2>
+          <p class="text-secondary mt-3">Discover what students are saying about our courses</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Testimonial 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Eduport is my go-to platform for learning new skills. The instructors are knowledgeable and the content is always up-to-date. I've completed 3 courses so far and each one has helped me advance in my career."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-testimonial-1.jpg" alt="Student">
+                </div>
+                <div class="testimonial-info">
+                  <h6>Carolyn Ortiz</h6>
+                  <p class="text-secondary mb-0">Web Developer</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "The Digital Marketing course was exactly what I needed to boost my business. The instructor provided practical examples and actionable strategies that I could implement right away. Highly recommended!"
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-testimonial-2.jpg" alt="Student">
+                </div>
+                <div class="testimonial-info">
+                  <h6>Dennis Barrett</h6>
+                  <p class="text-secondary mb-0">Small Business Owner</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "I've tried several online learning platforms, but Eduport stands out for its quality content and excellent instructors. The UI/UX Design course helped me land my dream job at a top tech company."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <img src="https://themes.getbootstrap.com/wp-content/uploads/2022/02/eduport-testimonial-3.jpg" alt="Student">
+                </div>
+                <div class="testimonial-info">
+                  <h6>Jacqueline Miller</h6>
+                  <p class="text-secondary mb-0">UI/UX Designer</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Column 1 - About -->
+        <div class="col-lg-3 col-md-6">
+          <a href="#" class="d-flex align-items-center mb-3">
+            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+              <span class="fw-bold">E</span>
+            </div>
+            <span class="ms-2 fs-4 fw-bold">
+              <span class="text-dark">Edu</span><span class="text-primary">port</span>
+            </span>
+          </a>
+          <p class="text-secondary">
+            Eduport is a fully responsive and premium Bootstrap 5 template & snippet. It's a perfect template for online courses, education, and learning management system.
+          </p>
+          <div class="d-flex mt-3">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <!-- Column 2 - Pages -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Pages</h5>
+          <a href="#" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Courses</a>
+          <a href="#" class="footer-link">Instructors</a>
+          <a href="#" class="footer-link">Events</a>
+          <a href="#" class="footer-link">Blog</a>
+        </div>
+        
+        <!-- Column 3 - Account -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Account</h5>
+          <a href="#" class="footer-link">Sign In</a>
+          <a href="#" class="footer-link">Register</a>
+          <a href="#" class="footer-link">Dashboard</a>
+          <a href="#" class="footer-link">My Courses</a>
+          <a href="#" class="footer-link">Profile</a>
+        </div>
+        
+        <!-- Column 4 - Support -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Support</h5>
+          <a href="#" class="footer-link">Contact Us</a>
+          <a href="#" class="footer-link">Knowledge Base</a>
+          <a href="#" class="footer-link">FAQs</a>
+          <a href="#" class="footer-link">Documentation</a>
+          <a href="#" class="footer-link">Forums</a>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="row">
+        <div class="col-12">
+          <div class="copyright text-center text-md-start">
+            <p class="mb-0 text-secondary">© 2023 Eduport. All rights reserved. Designed by <a href="#" class="text-primary text-decoration-none">Bootstrap Themes</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Swiper
+      var swiper = new Swiper(".courseSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+    });
+  </script>
+</body>
+</html>
